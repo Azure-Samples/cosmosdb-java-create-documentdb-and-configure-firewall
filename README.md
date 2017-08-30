@@ -1,15 +1,15 @@
 ---
-services: Documentdb
+services: Cosmosdb
 platforms: java
 author: alvadb
 ---
 
-## Getting Started with Documentdb - Create Document DB With IP Range - in Java ##
+## Getting Started with Cosmosdb - Create Cosmos DB With IP Range - in Java ##
 
 
-Azure DocumentDB sample for high availability.
-  - Create a DocumentDB configured with IP range filter
-  - Delete the DocumentDB.
+  Azure CosmosDB sample for high availability.
+   - Create a CosmosDB configured with IP range filterR
+   - Delete the CosmosDB.
  
 
 ## Running this Sample ##

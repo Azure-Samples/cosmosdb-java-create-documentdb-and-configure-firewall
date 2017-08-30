@@ -4,12 +4,12 @@
  * license information.
  */
 
-package com.microsoft.azure.management.documentdb.samples;
+package com.microsoft.azure.management.cosmosdb.samples;
 
 import com.microsoft.azure.credentials.ApplicationTokenCredentials;
 import com.microsoft.azure.management.Azure;
-import com.microsoft.azure.management.documentdb.DatabaseAccountKind;
-import com.microsoft.azure.management.documentdb.DocumentDBAccount;
+import com.microsoft.azure.management.cosmosdb.DatabaseAccountKind;
+import com.microsoft.azure.management.cosmosdb.CosmosDBAccount;
 import com.microsoft.azure.management.resources.fluentcore.arm.Region;
 import com.microsoft.azure.management.resources.fluentcore.utils.SdkContext;
 import com.microsoft.azure.management.samples.Utils;
@@ -18,11 +18,11 @@ import com.microsoft.rest.LogLevel;
 import java.io.File;
 
 /**
- * Azure DocumentDB sample for high availability.
- *  - Create a DocumentDB configured with IP range filter
- *  - Delete the DocumentDB.
+ * Azure CosmosDB sample for high availability.
+ *  - Create a CosmosDB configured with IP range filterR
+ *  - Delete the CosmosDB.
  */
-public final class CreateDocumentDBWithIPRange {
+public final class CreateCosmosDBWithIPRange {
     /**
      * Main function which runs the actual sample.
      * @param azure instance of the azure client
@@ -35,10 +35,10 @@ public final class CreateDocumentDBWithIPRange {
 
         try {
             //============================================================
-            // Create a DocumentDB
+            // Create a CosmosDB
 
-            System.out.println("Creating a DocumentDB...");
-            DocumentDBAccount documentDBAccount = azure.documentDBs().define(docDBName)
+            System.out.println("Creating a CosmosDB...");
+            CosmosDBAccount cosmosDBAccount = azure.cosmosDBAccounts().define(docDBName)
                     .withRegion(Region.US_EAST)
                     .withNewResourceGroup(rgName)
                     .withKind(DatabaseAccountKind.GLOBAL_DOCUMENT_DB)
@@ -48,14 +48,14 @@ public final class CreateDocumentDBWithIPRange {
                     .withIpRangeFilter("13.91.6.132,13.91.6.1/24")
                     .create();
 
-            System.out.println("Created DocumentDB");
-            Utils.print(documentDBAccount);
+            System.out.println("Created CosmosDB");
+            Utils.print(cosmosDBAccount);
 
             //============================================================
-            // Delete DocumentDB
-            System.out.println("Deleting the DocumentDB");
-            azure.documentDBs().deleteById(documentDBAccount.id());
-            System.out.println("Deleted the DocumentDB");
+            // Delete CosmosDB
+            System.out.println("Deleting the CosmosDB");
+            azure.cosmosDBAccounts().deleteById(cosmosDBAccount.id());
+            System.out.println("Deleted the CosmosDB");
 
             return true;
         } catch (Exception e) {
@@ -102,6 +102,6 @@ public final class CreateDocumentDBWithIPRange {
         }
     }
 
-    private CreateDocumentDBWithIPRange() {
+    private CreateCosmosDBWithIPRange() {
     }
 }
