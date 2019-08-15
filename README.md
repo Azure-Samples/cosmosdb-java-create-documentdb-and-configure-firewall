@@ -4,12 +4,12 @@ languages:
 - java
 products:
 - azure
-services: Cosmosdb
-platforms: java
-author: yaohaizh
+extensions:
+- services: Cosmosdb
+- platforms: java
 ---
 
-## Getting Started with Cosmosdb - Create Cosmos DB With IP Range - in Java ##
+# Getting Started with Cosmosdb - Create Cosmos DB With IP Range - in Java #
 
 
   Azure CosmosDB sample for high availability.
