@@ -4,9 +4,8 @@ languages:
 - java
 products:
 - azure
-extensions:
-- services: Cosmosdb
-- platforms: java
+description: "Getting Started with Cosmosdb - Create Cosmos DB With IP Range - in Java"
+urlFragment: cosmosdb-java-create-documentdb-and-configure-firewall
 ---
 
 # Getting Started with Cosmosdb - Create Cosmos DB With IP Range - in Java #
