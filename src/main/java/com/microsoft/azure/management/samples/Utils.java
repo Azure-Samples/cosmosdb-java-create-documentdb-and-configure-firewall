@@ -6,6 +6,9 @@
 
 package com.microsoft.azure.management.samples;
 
+import com.azure.resourcemanager.cosmos.models.CosmosDBAccount;
+import com.azure.resourcemanager.cosmos.models.DatabaseAccountListKeysResult;
+import com.azure.resourcemanager.cosmos.models.DatabaseAccountListReadOnlyKeysResult;
 import com.google.common.base.Joiner;
 import com.microsoft.azure.CloudException;
 import com.microsoft.azure.PagedList;
@@ -45,9 +48,6 @@ import com.microsoft.azure.management.containerregistry.RegistryCredentials;
 import com.microsoft.azure.management.containerservice.ContainerService;
 import com.microsoft.azure.management.containerservice.ContainerServiceOrchestratorTypes;
 import com.microsoft.azure.management.containerservice.KubernetesCluster;
-import com.microsoft.azure.management.cosmosdb.CosmosDBAccount;
-import com.microsoft.azure.management.cosmosdb.DatabaseAccountListKeysResult;
-import com.microsoft.azure.management.cosmosdb.DatabaseAccountListReadOnlyKeysResult;
 import com.microsoft.azure.management.dns.ARecordSet;
 import com.microsoft.azure.management.dns.AaaaRecordSet;
 import com.microsoft.azure.management.dns.CNameRecordSet;
@@ -1359,10 +1359,11 @@ public final class Utils {
     /**
      * Creates and returns a randomized name based on the prefix file for use by the sample.
      * @param namePrefix The prefix string to be used in generating the name.
+     * @param maxLen The max length to be used in generating the name
      * @return a random name
      * */
-    public static String createRandomName(String namePrefix) {
-        return SdkContext.randomResourceName(namePrefix, 30);
+    public static String createRandomName(String namePrefix, Integer maxLen) {
+        return SdkContext.randomResourceName(namePrefix, maxLen == null ? 30 : maxLen);
     }
 
     /**
@@ -2298,17 +2299,18 @@ public final class Utils {
             .append("\n\tPrimary Read-Only Key: ").append(readOnlyKeys.primaryReadonlyMasterKey())
             .append("\n\tSecondary Read-Only Key: ").append(readOnlyKeys.secondaryReadonlyMasterKey());
 
-        for (com.microsoft.azure.management.cosmosdb.Location writeReplica : cosmosDBAccount.writableReplications()) {
+        for (com.azure.resourcemanager.cosmos.models.Location writeReplica : cosmosDBAccount.writableReplications()) {
             builder.append("\n\t\tWrite replication: ")
                     .append("\n\t\t\tName :").append(writeReplica.locationName());
         }
 
         builder.append("\n\tNumber of read replications: ").append(cosmosDBAccount.readableReplications().size());
-        for (com.microsoft.azure.management.cosmosdb.Location readReplica : cosmosDBAccount.readableReplications()) {
+        for (com.azure.resourcemanager.cosmos.models.Location readReplica : cosmosDBAccount.readableReplications()) {
             builder.append("\n\t\tRead replication: ")
                     .append("\n\t\t\tName :").append(readReplica.locationName());
         }
 
+        System.out.println(builder.toString());
     }
 
     /**
