@@ -4,14 +4,14 @@ languages:
 - java
 products:
 - azure
-description: "Azure CosmosDB sample for high availability."
+description: "Azure Cosmos DB sample for high availability."
 urlFragment: cosmosdb-java-create-documentdb-and-configure-firewall
 ---
 
 # Create Cosmos DB With IP Range (Java)
 
 
-  Azure CosmosDB sample for high availability.
+  Azure Cosmos DB sample for high availability.
    - Create a CosmosDB configured with IP range filterR
    - Delete the CosmosDB.
  
